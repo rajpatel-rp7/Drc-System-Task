@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+    LogOut
+{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <nav class="navbar navbar-light navbar-glass navbar-top sticky-kit navbar-expand">
+            <button class="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="true" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+            <a class="navbar-brand mr-1 mr-sm-3" href="{% url 'dashboard' %}">
+              <div class="d-flex align-items-center"><span class="text-sans-serif">SocialSite</span></div>
+            </a>
+
+            <ul class="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
+              {% if request.user.is_authenticated %}
+                  <li {% if section == "dashboard" %}class="nav-item active"{% endif %}>
+                    <a  class=" px-3 py-0" href="{% url "dashboard" %}">My Dashboard</a></li>
+                  <li {% if section == "images" %}class="nav-item active" {% endif %}>
+                    <a class="px-3 py-0" href="#" >Images</a></li>
+                  <li {% if section == "people" %}class="nav-item active"{% endif %}>
+                    <a  class="px-3 py-0" href="#" >People</a></li>
+              {% endif %}
+              <li class="nav-item dropdown dropdown-on-hover">
+                {% if request.user.is_authenticated %}
+                    Hello {{ request.user.first_name }} {{ request.user.last_name }},
+                    <a href="{% url "logout" %}">Logout</a>
+                {% else %}
+                    <a href="{% url "login" %}">Log-in</a>
+                {% endif %}
+              </li>
+            </ul>
+        </nav>
+        <div class="row flex-center py-8">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                <div class="card">
+                    <div class="card-body p-4 p-sm-5">
+                        <div class="text-center"><img class="d-block mx-auto mb-4" src="{% static 'img/illustrations/rocket.png' %}" alt="shield" width="70" />
+                            <h4>See you again!</h4>
+                            <p>Thanks for using SocialSite. You are <br />now successfully signed out.</p><a class="btn btn-primary btn-sm mt-3" href="{% url "login" %}"><span class="fas fa-chevron-left mr-1" data-fa-transform="shrink-4 down-1"></span>Return to Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

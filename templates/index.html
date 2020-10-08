@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="{{ message.tags }}" {% if message.tags %}role="alert"{% endif %}>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <h2>Welcome to Task
+            {% if user.is_authenticated %}
+                {{ user.email }}
+            {% endif %}
+        </h2>
+    </div>
+    <br>
+    <br>
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered" style="height: 100px; width: 500px">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">File Name</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for fs in files %}
+            <tr>
+              <th scope="row">{{ fs.id }}</th>
+              <td>
+                  {{ fs.title }}
+              </td>
+              <td>
+
+                  <button type="button" class="btn btn-primary" onclick="window.location.href='{{ fs.file.url }}';" formtarget="_blank">Download</button>
+
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+{% endblock %}

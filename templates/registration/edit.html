@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+<div class="card mb-3">
+    <div class="card-header position-relative min-vh-25 mb-7">
+        <div class="bg-holder rounded-soft rounded-bottom-0" style="background-image:url({% static 'img/generic/4.jpg' %});"></div>
+        <!--/.bg-holder-->
+        <div class="avatar avatar-5xl avatar-profile"><img class="rounded-circle img-thumbnail shadow-sm" src="{% static 'img/team/2.jpg' %}" width="200" alt="" /></div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-8">
+                <h4 class="mb-1"> Anthony Hopkins<small class="fas fa-check-circle text-primary ml-1" data-toggle="tooltip" data-placement="right" title="Verified" data-fa-transform="shrink-4 down-2"></small></h4>
+                <h5 class="fs-0 font-weight-normal">Senior Software Engineer at Technext Limited</h5>
+                <p class="text-500">New York, USA</p><button class="btn btn-falcon-primary btn-sm px-3" type="button">Following</button><button class="btn btn-falcon-default btn-sm px-3 ml-2" type="button">Message</button>
+                <hr class="border-dashed my-4 d-lg-none" />
+            </div>
+            <div class="col pl-2 pl-lg-3"><a class="media align-items-center mb-2" href="#"><span class="fas fa-user-circle fs-4 mr-2 text-700"></span>
+                <div class="media-body">
+                    <h6 class="mb-0">See followers (330)</h6>
+                </div>
+            </a><a class="media align-items-center mb-2" href="#"><img class="d-flex align-self-center mr-2" src="{% static 'img/logos/g.png' %}" alt="Generic placeholder image" width="30" />
+                <div class="media-body">
+                    <h6 class="mb-0">Google</h6>
+                </div>
+            </a><a class="media align-items-center mb-2" href="#"><img class="d-flex align-self-center mr-2" src="{% static 'img/logos/apple.png' %}" alt="Generic placeholder image" width="30" />
+                <div class="media-body">
+                    <h6 class="mb-0">Apple</h6>
+                </div>
+            </a><a class="media align-items-center mb-2" href="#"><img class="d-flex align-self-center mr-2" src="{% static 'img/logos/hp.png' %}" alt="Generic placeholder image" width="30" />
+                <div class="media-body">
+                    <h6 class="mb-0">Hewlett Packard</h6>
+                </div>
+            </a></div>
+        </div>
+    </div>
+</div>
+<div class="row no-gutters">
+    <div class="col-lg-8 pr-lg-2">
+        <div class="card mb-3 mb-xl-0">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">Photos</h5>
+            </div>
+            <div class="card-body overflow-hidden">
+                <div class="row no-gutters">
+                    <div class="col-6 p-1"><a href="{% static 'img/generic/4.jpg' %}" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="{% static 'img/generic/4.jpg' %}" alt="" /></a></div>
+                    <div class="col-6 p-1"><a href="{% static 'img/generic/5.jpg' %}" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="{% static 'img/generic/5.jpg' %}" alt="" /></a></div>
+                    <div class="col-4 p-1"><a href="{% static 'img/gallery/4.jpg' %}" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="{% static 'img/gallery/4.jpg' %}" alt="" /></a></div>
+                    <div class="col-4 p-1"><a href="{% static 'img/gallery/5.jpg' %}" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="{% static 'img/gallery/5.jpg' %}" alt="" /></a></div>
+                    <div class="col-4 p-1"><a href="{% static 'img/gallery/3.jpg' %}" data-fancybox="gallery" data-caption="Image caption"><img class="rounded w-100" src="{% static 'img/gallery/3.jpg' %}" alt="" /></a></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card mb-3 mb-xl-0">
+            <div class="card-header ">
+              <h5 class="mb-0">Edit Your Profile</h5>
+            </div>
+            <div class="card-body overflow-hidden bg-light">
+              <div class="row no-gutters">
+                  <form method="post" enctype="multipart/form-data">
+                    {{ user_form|crispy }}
+                    {{ profile_form|crispy }}
+                    {% csrf_token %}
+                    <button class="btn btn-primary mb-3" type="submit">Save</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock %}
