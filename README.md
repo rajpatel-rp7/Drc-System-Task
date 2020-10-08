@@ -22,3 +22,14 @@
 - pytz==2020.1
 - sqlparse==0.4.1
 
+# Registration page
+![alt text](https://github.com/rajpatel-rp7/Drc-System-Task/blob/master/screeshoots/registration.png)
+
+# Login Page
+![alt text](https://github.com/rajpatel-rp7/Drc-System-Task/blob/master/screeshoots/login.png)
+
+# File Upload
+![alt text](https://github.com/rajpatel-rp7/Drc-System-Task/blob/master/screeshoots/file%20upload.png)
+
+# List Of Uploaded File
+![alt text](https://github.com/rajpatel-rp7/Drc-System-Task/blob/master/screeshoots/uploaded%20file.png)
