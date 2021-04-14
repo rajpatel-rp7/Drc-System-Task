@@ -1,4 +1,4 @@
-# Drc-System-Task
+# Django-PDF-Video-Upload-Validation
 ### Steps to Run The Project
 1. create virtual environment
 - python -m venv venv
